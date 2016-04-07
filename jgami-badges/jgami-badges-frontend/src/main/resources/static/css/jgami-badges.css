@@ -1,0 +1,19 @@
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.container {
+    max-width: 850px;
+}
+
+.jumbotron h1 {
+    font-size: 48px;
+}
+
+.footer {
+  padding-top: 20px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 10px;
+}

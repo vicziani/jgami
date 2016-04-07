@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head th:include="template :: head"></head>
+
+<body>
+
+<div th:include="template :: menu"></div>
+
+<div class="container">
+
+    <h1>Kurzus létrehozása</h1>
+
+    <div class="alert alert-success" role="alert" th:if="${message}" th:text="${message}">Saved</div>
+
+    <form th:action="@{/admin/courses}" th:object="${courseForm}" method="post">
+        <div class="form-group" th:classappend="${#fields.hasErrors('name')} ? 'has-error'">
+            <label for="nameInput">Név</label>
+            <input type="text" th:field="*{name}" id="nameInput" class="form-control" placeholder="Kurzus neve"/>
+            <span class="help-block"
+                  th:if="${#fields.hasErrors('name')}"
+                  th:errors="*{name}">
+                Incorrect
+        </span>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('description')} ? 'has-error'">
+            <label for="descriptionInput">Leírás</label>
+            <textarea th:field="*{description}" id="descriptionInput" class="form-control" placeholder="Kurzus leírása"/>
+            <span class="help-block"
+                  th:if="${#fields.hasErrors('description')}"
+                  th:errors="*{description}">
+                Incorrect
+        </span>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('start')} ? 'has-error'">
+            <label for="startInput">Kezdete</label>
+            <input type="text" th:field="*{start}" id="startInput" class="form-control"/>
+            <span class="help-block"
+                  th:if="${#fields.hasErrors('start')}"
+                  th:errors="*{start}">
+            Incorrect
+        </span>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('end')} ? 'has-error'">
+            <label for="endInput">Vége</label>
+            <input type="text" th:field="*{end}" id="startInput" class="form-control"/>
+            <span class="help-block"
+                  th:if="${#fields.hasErrors('end')}"
+                  th:errors="*{end}">
+            Incorrect
+        </span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Kurzus létrehozása</button>
+    </form>
+
+    <h2>Kurzusok</h2>
+
+    <table class="table table-hover">
+
+        <tr>
+            <th>Név</th>
+            <th>Időpont</th>
+        </tr>
+
+        <tbody>
+        <th:block th:each="course: ${courses}">
+            <tr>
+                <td th:text="${course.name}"></td>
+                <td th:text="${course.start + ' - ' + course.end}"></td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
