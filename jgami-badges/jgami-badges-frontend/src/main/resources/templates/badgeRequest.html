@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
-    <link rel="stylesheet" th:href="@{/css/jgami-badges.css}" />
-
-    <title>JTechLog Badges</title>
-</head>
+<head th:include="badges-template :: head"></head>
 <body>
 
 <div class="container" role="main">
@@ -16,6 +9,7 @@
         <h1>JTechLog Badges</h1>
         <p>Gyűjts az oktatásokkal jelvényeket, oszd meg másokkal, juss hozzá egyedi
             tartalmakhoz, és legyél egy Java közösség tagja!</p>
+        <a th:href="@{/about}" class="btn btn-primary">Még több információt</a>
         <a href="http://www.jtechlog.hu" class="btn btn-primary">Követem a blogot</a>
     </div>
 
@@ -60,7 +54,13 @@
         <button type="submit" class="btn btn-primary">Kérem a jelvényt</button>
     </form>
 
-    <div class="footer">JTechLog Badges, Viczián István, 2016.</div>
+    <div class="row text-center about">
+        <a href="https://github.com/vicziani"><i class="fa fa-github"></i></a>
+        <a href="https://twitter.com/vicziani"><i class="fa fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/viczianistvan"><i class="fa fa-linkedin"></i></a>
+    </div>
+
+    <div th:replace="badges-template :: footer"></div>
 
 </div>
 

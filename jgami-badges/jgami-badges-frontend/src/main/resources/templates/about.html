@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head th:include="badges-template :: head"></head>
+<body>
+
+<div class="container theme-showcase" role="main">
+    <div class="page-header">
+        <h1>JTechLog Badges</h1>
+    </div>
+
+    <h2>Bevezetés</h2>
+
+    <p>Az ötlet alapvetően onnan indult ki, hogy hiszek a
+        <a href="http://hu.wikipedia.org/wiki/Gamification">gamification</a> létjogosultságában. Ebben a környezetben
+        ez azt jelenti, hogy az oktatásba valamiféle játékosságot bevinni. Itt első körben jelvények gyűjtésére gondolok,
+        melyekkel igazolni lehet, hogy részt vettél nálam valamilyen tanfolyamon. A látogatási bizonyítvány digitális
+        formája. Ilyent tudsz <a href="/">igényelni itt</a>.
+    </p>
+
+    <p>A Mozilla ehhez egy remek kezdeményezést indított <a href="http://openbadges.org">OpenBadges</a> néven,
+        mely egy nyílt forráskódú platform arra, hogy jelvényeket lehessen szerezni, és ezeket megosztani. Gyakorlatilag
+        az oktatást akarják azzal színesíteni, hogy ilyen jelvényeket lehet gyűjteni, melyek hitelesek, és megosztani.
+        Hiszen manapság mindenki az oktatás megreformálásáról, annak digitális térbe való átültetéséről, az
+        <a href="http://en.wikipedia.org/wiki/Massive_open_online_course">MOOC-ről</a> beszél, és nem véletlen az ilyen
+        platformok, pl. a Coursera népszerűsége.</p>
+
+    <div class="row text-center">
+        <a href="http://openbadges.org"><img src="/images/OpenBadges_Insignia_WeIssue.png" alt="OpenBadges"/></a>
+    </div>
+
+
+    <h2>Hogyan működik?</h2>
+    <p>Az elv nagyon egyszerű. Elvégzel egy tanfolyamot, az intézmény rendszerében rögzítésre kerül,
+        és tartalmaz pár adatot, mint a tanfolyam neve, időpontja, résztvevő e-mail címe, stb. Ezután előállítja a
+        jelvényt. Ez nem más mint egy képállomány, és a hozzá tartozó adatok. A legszebb az egészben, hogy az adatokat
+        maga a képállomány digitális formában képes tartalmazni. Ezt a jelvényt utána lehet továbbküldeni, megosztani, publikálni.
+        De erre egy hivatalos infrastruktúra is van, a <a href="http://backpack.openbadges.org">Mozilla Backpack</a>. Ide akár
+        az intézmény is felküldheti a jelvényeket, de kézzel is meg fel lehet őket tölteni. Aztán a felhasználó csoportokba rendezheti,
+        adminisztrálhatja a jelvényeit, és dönthet arról, hogy ki melyiket láthatja. A jelvény bármikor később visszaellenőrizhető.</p>
+
+    <div class="row text-center">
+        <img src="/images/backpack.png" />
+    </div>
+
+    <h2>Mi a technológia?</h2>
+    <p>A kiállító (számára a dokumentáció <a href="https://wiki.mozilla.org/Badges/Onboarding-Issuer">elérhető itt</a>)
+        egy JSON fájlban leírja, hogy ki, mikor milyen jelvényt kapott, ez az un.
+        <a href="https://github.com/mozilla/openbadges-specification/blob/master/Assertion/latest.md">assertion</a>.
+        Ugyanígy egy másik JSON-be le kell írni a tanfolyam tulajdonságait és egy újabban a kiállító adatait. Ezek ellenőrzésére van egy online
+        <a href="http://validator.openbadges.org/">validator</a> is. Az assertionben meg kell adni egy még üres png állományt. Ezt
+        a képet kell összepárosítani az assertionnel mely kettő együtt a jelvény. Ezt
+        a Mozilla <a href="https://github.com/mozilla/openbadges/wiki/Badge-Baking">bakeringnek</a> nevezi. Ekkor a png-be
+        belekerül vagy az assertion url-je, vagy a teljes JSON tartalom.
+        Ezt megteheti a kiállító rendszere (több programozási nyelven is elérhető hozzá API), de megteheti a Mozilla
+        infrastruktúrája is (REST API hívással). Ez úgy lehetséges, hogy a png egy nagyon szabad formátum,
+        bármit bele lehet kódolni. Amennyiben azonban
+        kiállító egy JavaScript állományt is elhelyez a lapján (un.
+        <a href="https://github.com/mozilla/openbadges/blob/development/docs/apis/issuer_api.md">Issuer API</a>), ez képes a
+        böngészőt átirányítani a Mozilla Backpack
+        oldalára, ahová már felkerül a jelvény, és itt megtörténik a bakering is. Amennyiben ezt nem teszi meg,
+        a felhasználó kézzel is feltöltheti a png állományt. A png állományban a JSON dokumentumban ott van egy pár
+        URL a kiállító rendszerére, az ellenőrzéshez ezeket fenn kell tartani.
+    </p>
+    <p>Egy jó tutorial
+        <a href="http://billymeinke.wordpress.com/2012/05/24/open-badges-want-to-make-your-own-badges-by-hand-heres-how/">itt olvasható</a>.</p>
+
+    <div class="footer">JTechLog Badges (jtechlog@gmail.com), Viczián István, 2014.</div>
+
+</div>
+
+<div th:replace="badges-template :: footer"></div>
+
+</body>
+</html>
