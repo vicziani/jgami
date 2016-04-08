@@ -11,7 +11,7 @@
 
     <h1>Kurzus létrehozása</h1>
 
-    <div class="alert alert-success" role="alert" th:if="${message}" th:text="${message}">Saved</div>
+    <div class="alert alert-success" role="alert" th:if="${message}" th:text="#{${message}}">Saved</div>
 
     <form th:action="@{/admin/courses}" th:object="${courseForm}" method="post">
         <div class="form-group" th:classappend="${#fields.hasErrors('name')} ? 'has-error'">

@@ -13,9 +13,9 @@ public class CourseFormValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmpty(errors, "name", "validation.name.required", "Name required!");
-        ValidationUtils.rejectIfEmpty(errors, "description", "validation.name.required", "Description required!");
-        ValidationUtils.rejectIfEmpty(errors, "start", "validation.name.required", "Start required!");
-        ValidationUtils.rejectIfEmpty(errors, "end", "validation.name.required", "End required!");
+        ValidationUtils.rejectIfEmpty(errors, "name", "courses.validation.name.required");
+        ValidationUtils.rejectIfEmpty(errors, "description", "courses.validation.description.required");
+        ValidationUtils.rejectIfEmpty(errors, "start", "courses.validation.start.required");
+        ValidationUtils.rejectIfEmpty(errors, "end", "courses.validation.end.required");
     }
 }

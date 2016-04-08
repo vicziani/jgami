@@ -36,7 +36,7 @@ public class ApproveController {
             RedirectAttributes redirectAttributes) {
 
         badgeService.approveBadgeRequest(approveForm.getIds());
-        redirectAttributes.addFlashAttribute("message", "Jóváhagyva");
+        redirectAttributes.addFlashAttribute("message", "badges.message.approved");
         return new ModelAndView("redirect:/admin/approve");
     }
 }

@@ -44,7 +44,7 @@ public class CoursesController {
         }
 
         courseService.createCourse(new CourseFormConverter().convert(courseForm));
-        redirectAttributes.addFlashAttribute("message", "Kurzus mentve");
+        redirectAttributes.addFlashAttribute("message", "courses.message.successfull.course.save");
         return new ModelAndView("redirect:/admin/courses");
     }
 

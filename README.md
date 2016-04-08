@@ -2,8 +2,8 @@
 
 ## Bevezetés
 
-A JTechLog Badges alkalmazással kurzusokat lehet rögzíteni, majd a kurzusok elvégzése után jelvényeket lehet
-igényelni, jóváhagyni, majd letölteni.
+A JTechLog Badges alkalmazással az oktatók kurzusokat rögzíthetnek. A hallgatók a kurzusok elvégzése után jelvényeket
+igényelhetnek. Az oktatók azt jóváhagyhatják, majd a hallgatók letölthetik.
 
 ## Indítása
 
@@ -35,5 +35,12 @@ van a `MenuHandlerInterceptor`, mely összegyűjti a moduloktól a menüpontokat
 elhelyezi minden kérés válaszaként visszamenő `ModelAndView` objektumban. Innen a `template.html` fájlban lévő
 `menu` fragment veszi ki, melyet minden Thymeleaf template include-ál.
 
+### I18N
 
-viczian.istvan a gmail-e
+Sajnos a Spring egy kontexten belül egy `MessageSource`-ot tud használni, ezért annak kell megmondani a
+fordításokat tartalmazó fájlokat. Spring Boot-ban ezeket az `application.properties` fájlban kell
+megadni a `spring.messages.basename` kulcs alatt. Arra is vigyázni kell, hogy a kulcsok ne
+keveredjenek össze a különböző modulokban, ezért a modul nevével érdemes prefixelni a kulcsokat.
+
+
+viczian.istvan a gmail-en

@@ -22,7 +22,7 @@ public class BadgeRequestController {
         this.badgeService= badgeService;
     }
 
-    @InitBinder("requestBadgeForm")
+    @InitBinder("badgeRequestForm")
     public void initBinder(WebDataBinder binder) {
         binder.addValidators(new BadgeRequestFormValidator());
     }
@@ -44,7 +44,7 @@ public class BadgeRequestController {
         }
 
         badgeService.requestBadge(new BadgeRequestFormConverter().convert(badgeRequestForm));
-        redirectAttributes.addFlashAttribute("message", "Kérelmed elküldésre került");
+        redirectAttributes.addFlashAttribute("message", "badges.message.success.request");
         return new ModelAndView("redirect:/");
     }
 }
