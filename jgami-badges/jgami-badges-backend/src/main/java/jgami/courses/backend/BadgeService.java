@@ -56,12 +56,12 @@ public class BadgeService {
 
     @Transactional
     public void approveBadgeRequest(List<String> ids) {
-        List<Badge> badges = badgeRepository.findAll(ids.stream().map(s -> {return UUID.fromString(s);}).collect(Collectors.toList()));
+        List<Badge> badges = badgeRepository.findAll(ids);
         badges.forEach(b -> {b.approve(null);});
     }
 
     public BadgeInfo getBadgeById(String id) {
-        return new BadgeInfoConverter(getCourses()).convert(badgeRepository.findOne(UUID.fromString(id)));
+        return new BadgeInfoConverter(getCourses()).convert(badgeRepository.findOne(id));
     }
 
     public List<CourseInfo> listCourses() {

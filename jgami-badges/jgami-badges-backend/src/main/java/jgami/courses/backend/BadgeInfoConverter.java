@@ -16,6 +16,7 @@ public class BadgeInfoConverter implements Converter<Badge, BadgeInfo> {
     @Override
     public BadgeInfo convert(Badge badge) {
         return new BadgeInfo(badge.getId(), badge.getName(), badge.getEmail(),
+                badge.getCourseId(),
                 courses.get(badge.getCourseId()).name, badge.getIssuedAt());
     }
 }

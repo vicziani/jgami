@@ -29,7 +29,7 @@ public class BadgeRequestController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView listBadgeRequests() {
-        return new ModelAndView("badgeRequest")
+        return new ModelAndView("badge-request")
                 .addObject("badgeRequestForm", new BadgeRequestForm())
                 .addObject("courses", badgeService.listCourses());
     }
@@ -39,7 +39,7 @@ public class BadgeRequestController {
             @Validated BadgeRequestForm badgeRequestForm, BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("badgeRequest")
+            return new ModelAndView("badge-request")
                     .addObject("courses", badgeService.listCourses());
         }
 

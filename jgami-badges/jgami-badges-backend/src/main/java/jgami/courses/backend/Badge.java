@@ -1,34 +1,38 @@
 package jgami.courses.backend;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
+@Table(name = "badges_badges")
 public class Badge {
 
     @Id
-    private UUID id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(length = 36)
+    private String id;
 
     private String name;
 
     private String email;
 
+    @Column(name = "course_id")
     private long courseId;
 
+    @Column(name = "issued_at", columnDefinition = "DATETIME")
     private LocalDateTime issuedAt;
 
-    @Lob
-    private byte[] png;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "badge_image_id")
+    private BadgeImage badgeImage;
 
     private Badge() {
     }
 
     public Badge(String name, String email, long courseId) {
-        this.id = UUID.randomUUID();
         this.name = name;
         this.email = email;
         this.courseId = courseId;
@@ -36,10 +40,10 @@ public class Badge {
 
     public void approve(byte[] png) {
         issuedAt = LocalDateTime.now();
-        this.png = png;
+        this.badgeImage = new BadgeImage(png);
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
@@ -59,7 +63,7 @@ public class Badge {
         return issuedAt;
     }
 
-    public byte[] getPng() {
-        return png;
+    public BadgeImage getBadgeImage() {
+        return badgeImage;
     }
 }

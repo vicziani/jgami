@@ -17,6 +17,8 @@ public class BadgesModule implements Module {
 
     @Override
     public List<MenuItem> getMenuItems() {
-        return Arrays.asList(new MenuItem("Jóváhagyás", "/admin/approve"));
+        return Arrays.asList(
+                new MenuItem("badges.menu.approve", "/admin/approve"),
+                new MenuItem("badges.menu.badges", "/admin/badges"));
     }
 }

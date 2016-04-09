@@ -1,11 +1,10 @@
 package jgami.courses.backend;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "courses_courses")
 public class Course {
 
     @Id
@@ -16,8 +15,10 @@ public class Course {
 
     private String description;
 
+    @Column(columnDefinition = "DATE")
     private LocalDate start;
 
+    @Column(columnDefinition = "DATE")
     private LocalDate end;
 
     private Course() {

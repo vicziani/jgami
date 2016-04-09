@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head th:include="template :: head"></head>
+
+<body>
+
+<div th:include="template :: menu"></div>
+
+<div class="container">
+
+    <h2>Jelvények</h2>
+
+        <table class="table table-hover">
+
+            <tr>
+                <th>Név</th>
+                <th>E-mail</th>
+                <th>Kurzus</th>
+                <th>Kiadva</th>
+            </tr>
+
+            <tbody>
+            <th:block th:each="badge: ${badges}">
+                <tr>
+                    <td th:text="${badge.name}"></td>
+                    <td th:text="${badge.email}"></td>
+                    <td th:text="${badge.courseName}"></td>
+                    <td th:text="${badge.issuedAt}"></td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+
+</div>
+
+</body>
+</html>

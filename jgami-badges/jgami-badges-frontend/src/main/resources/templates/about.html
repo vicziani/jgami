@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head th:include="badges-template :: head"></head>
+<head th:include="public-template :: head"></head>
 <body>
 
 <div class="container theme-showcase" role="main">
@@ -64,11 +64,10 @@
     <p>Egy jó tutorial
         <a href="http://billymeinke.wordpress.com/2012/05/24/open-badges-want-to-make-your-own-badges-by-hand-heres-how/">itt olvasható</a>.</p>
 
-    <div class="footer">JTechLog Badges (jtechlog@gmail.com), Viczián István, 2014.</div>
 
+    <div th:replace="public-template :: footer"></div>
 </div>
 
-<div th:replace="badges-template :: footer"></div>
 
 </body>
 </html>

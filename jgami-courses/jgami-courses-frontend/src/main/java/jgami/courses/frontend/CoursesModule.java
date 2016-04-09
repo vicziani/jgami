@@ -17,6 +17,6 @@ public class CoursesModule implements Module {
 
     @Override
     public List<MenuItem> getMenuItems() {
-        return Arrays.asList(new MenuItem("Kurzusok", "/admin/courses"));
+        return Arrays.asList(new MenuItem("courses.menu.courses", "/admin/courses"));
     }
 }
